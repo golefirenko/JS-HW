@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Title of the document</title>
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<form>
+    <label for="fname">Ім'я:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+
+    <label for="email">Пошта:</label>
+    <input type="text" id="email" name="email"><br><br>
+
+    <label for="age">Вік:</label>
+    <input type="text" id="age" name="age"><br><br>
+
+    <label for="address">Адреса:</label>
+    <input type="text" id="address" name="address" style="width: 25%;"><br><br>
+
+    <label for="posotion">Позиція:</label>
+    <input type="text" id="position" name="position"><br><br>
+
+    <label for="skills">Навички:</label>
+    <input type="text" id="skills" name="skills" style="width: 30%;"><br><br>
+
+
+</form>
+<button type="button" class="form-button">Click Me!</button>
+</body>
+
+<script>
+   const userData = {
+            firstName: "John",
+            secondName: "Smith",
+            age: "35",
+            email: "js@gmail.com",
+            position: "Director",
+            location: {
+                country: "Ukraine",
+                city: "Kyiv",
+                street: "Dehtarna",
+                streetNumber: "11"
+            },
+
+            keySkills: [
+                "Team Management",
+                "Scope Management",
+                "Planning",
+                "Estimations"
+            ]
+        };
+
+        // створення змінної з назвою submitButton, в яку за класом form-button буде назначатися елемент кнопки з нашого DOM дереву
+const submitButton = document.querySelector('.form-button'); 
+
+
+//створення функції з назвою buttonHandler
+function buttonHandler() { 
+    let fullName = userData.firstName + " "
+    +userData.secondName;
+
+    document.getElementById("fname").setAttribute("value",fullName);
+
+
+    document.getElementById("email").setAttribute("value",userData.email);
+
+    document.getElementById("age").setAttribute("value",userData.age);
+
+    let currentLocation = userData.location.country + ", "
+    +userData.location.city + ", "
+    +userData.location.street +", "
+    +userData.location.streetNumber;
+
+    document.getElementById("address").setAttribute("value",currentLocation);
+
+    document.getElementById("position").setAttribute("value",userData.position);
+
+    let keySkills = userData.keySkills[0] + ", "
+    +userData.keySkills[1] + ", "
+    +userData.keySkills[2] + ", "
+    +userData.keySkills[3] + ".";
+
+    document.getElementById("skills").setAttribute("value",keySkills);
+
+
+
+
+    //alert("Я натисла кнопку");
+	// тут знаходиться тіло функції — тобто код який виконується, при виконані функції
+    //console.log("The button clicked!");
+};
+
+
+// додавання на нашу кнопку Event Listener, який буде реагувати на click по кнопці, а також викликати функцію buttonHandler
+submitButton.addEventListener("click", buttonHandler); 
+
+
+</script>
+
+</html>
