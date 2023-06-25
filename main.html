@@ -1,5 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
+    <style>
+        form.hidden {
+            display: none;
+        }
+    </style>
+
 <head>
   <title>Title of the document</title>
 </head>
@@ -7,7 +14,7 @@
 
 <h1>This is a heading</h1>
 <p>This is a paragraph.</p>
-<form>
+<form id="main_form" class="hidden"> 
     <label for="fname">Ім'я:</label>
     <input type="text" id="fname" name="fname"><br><br>
 
@@ -59,6 +66,9 @@ const submitButton = document.querySelector('.form-button');
 
 //створення функції з назвою buttonHandler
 function buttonHandler() { 
+    const mainForm = document.querySelector('#main_form');
+    mainForm.classList.remove("hidden");
+
     let fullName = userData.firstName + " "
     +userData.secondName;
 
@@ -77,20 +87,19 @@ function buttonHandler() {
     document.getElementById("address").setAttribute("value",currentLocation);
 
     document.getElementById("position").setAttribute("value",userData.position);
-
+/*
     let keySkills = userData.keySkills[0] + ", "
     +userData.keySkills[1] + ", "
     +userData.keySkills[2] + ", "
     +userData.keySkills[3] + ".";
+*/
 
-    document.getElementById("skills").setAttribute("value",keySkills);
+const elements = userData.keySkills;
 
+let keySkills=elements.join(", ");
 
+document.getElementById("skills").setAttribute("value",keySkills);
 
-
-    //alert("Я натисла кнопку");
-	// тут знаходиться тіло функції — тобто код який виконується, при виконані функції
-    //console.log("The button clicked!");
 };
 
 
